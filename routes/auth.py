@@ -11,8 +11,8 @@ def register():
         username = request.form['username']
         password = request.form['password']
         is_teacher = 'is_teacher' in request.form
-        user = User(username=username, password=password, is_teacher=is_teacher)
-        user.set_password(password)  # метод для хеширования
+        user = User(username=username, is_teacher=is_teacher)
+        user.set_password(password)
         db.session.add(user)
         db.session.commit()
         flash('Регистрация успешна')
