@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}{{ lesson.title }} — {{ lesson.course.title }}{% endblock %}
+{% block content %}
+<div class="container mx-auto py-8">
+  <h1 class="text-3xl font-semibold mb-4">{{ lesson.title }}</h1>
+  <div class="prose mb-6">{{ lesson.content|safe }}</div>
+  <div class="flex justify-between">
+    {% if prev %}<a href="{{ url_for('lessons.lesson_detail', course_id=lesson.course_id, lesson_id=prev.id) }}" class="btn-primary">Предыдущий</a>{% endif %}
+    {% if next %}<a href="{{ url_for('lessons.lesson_detail', course_id=lesson.course_id, lesson_id=next.id) }}" class="btn-primary">Следующий</a>{% endif %}
+  </div>
+</div>
+{% endblock %}

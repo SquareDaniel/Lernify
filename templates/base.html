@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Learnify{% endblock %}</title>
+  <!-- Premium Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+  <nav class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto flex items-center justify-between py-4 px-6">
+      <a href="/" class="text-2xl font-playfair text-gray-900 hover:text-gray-700 transition">Learnify</a>
+      <div class="space-x-4">
+        <a href="/courses" class="text-gray-700 hover:text-gray-900 font-medium">Курсы</a>
+        {% if current_user.is_authenticated %}
+          <a href="/dashboard" class="text-gray-700 hover:text-gray-900 font-medium">Кабинет</a>
+          <a href="/logout" class="text-red-500 hover:text-red-700 font-medium">Выйти</a>
+        {% else %}
+          <a href="/login" class="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Войти</a>
+          <a href="/register" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition">Регистрация</a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+  {% block content %}{% endblock %}
+</body>
+</html>

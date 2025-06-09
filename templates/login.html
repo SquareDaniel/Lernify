@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Вход — Learnify{% endblock %}
+{% block content %}
+<div class="container mx-auto py-8 max-w-md">
+  <h2 class="text-2xl mb-4">Вход</h2>
+  <form method="post" class="bg-white p-6 rounded shadow">
+    <input name="username" placeholder="Имя пользователя" class="w-full mb-3 p-2 border rounded" required>
+    <input type="password" name="password" placeholder="Пароль" class="w-full mb-3 p-2 border rounded" required>
+    <button type="submit" class="btn-primary w-full py-2">Войти</button>
+  </form>
+</div>
+{% endblock %}

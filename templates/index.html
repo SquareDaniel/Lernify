@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Главная — Learnify{% endblock %}
+{% block content %}
+<!-- Hero Section -->
+<section class="relative bg-center bg-cover h-screen" style="background-image:url('{{ url_for('static', filename='images/hero-bg.jpg') }}')">
+  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+  <div class="container mx-auto h-full flex flex-col items-center justify-center text-center px-4">
+    <h1 class="text-5xl md:text-6xl font-playfair text-white drop-shadow-lg mb-4">Добро пожаловать в Learnify</h1>
+    <p class="text-xl md:text-2xl text-gray-200 mb-6">Уникальные курсы от ведущих экспертов индустрии</p>
+    <a href="/register" class="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full text-lg font-medium hover:from-blue-600 hover:to-indigo-700 transition">Начать обучение</a>
+  </div>
+</section>
+
+<!-- Featured Courses -->
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-playfair text-gray-900 mb-8">Популярные курсы</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for course in courses %}
+      <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
+        <div class="p-6">
+          <h3 class="text-2xl font-semibold mb-2 text-gray-800">{{ course.title }}</h3>
+          <p class="text-gray-600 mb-4 truncate">{{ course.description }}</p>
+          <a href="{{ url_for('courses.course_detail', course_id=course.id) }}" class="inline-block mt-2 px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Подробнее</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
