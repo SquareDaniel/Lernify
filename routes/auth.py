@@ -15,8 +15,9 @@ def register():
         user.set_password(password)
         db.session.add(user)
         db.session.commit()
+        login_user(user)
         flash('Регистрация успешна')
-        return redirect(url_for('auth.login'))
+        return redirect(url_for('dashboard.index'))
     return render_template('register.html')
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
